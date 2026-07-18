@@ -1,0 +1,84 @@
+/* Touch-only flight controls. Kept separate so mobile browsers fetch the new controls afresh. */
+#touchControls,
+#touchControls * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+}
+
+#moveJoystick {
+  border-radius: 50%;
+  pointer-events: auto;
+  touch-action: none !important;
+  overscroll-behavior: contain;
+}
+
+.joystick-track {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(140, 241, 210, .09) 0 25%, rgba(5, 16, 20, .64) 67%);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .28), inset 0 0 0 12px rgba(255, 255, 255, .025);
+}
+
+.joystick-track::before,
+.joystick-track::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, .1);
+  pointer-events: none;
+}
+
+.joystick-track::before {
+  top: 18px;
+  bottom: 18px;
+  left: 50%;
+  width: 1px;
+}
+
+.joystick-track::after {
+  top: 50%;
+  right: 18px;
+  left: 18px;
+  height: 1px;
+}
+
+.joystick-knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
+  border: 1px solid rgba(255, 255, 255, .42);
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(226, 255, 247, .93), rgba(100, 222, 190, .9));
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .7);
+  transition: transform .13s ease-out;
+  display: grid;
+  place-items: center;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.joystick-knob span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #173c33;
+  box-shadow: 0 0 0 6px rgba(7, 32, 25, .11);
+}
+
+.touch-pad.active .joystick-knob {
+  transition: none;
+  box-shadow: 0 10px 27px rgba(0, 0, 0, .42), 0 0 0 5px rgba(140, 241, 210, .11);
+}
+
+.touch-key {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  touch-action: none !important;
+}
