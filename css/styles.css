@@ -55,6 +55,7 @@
     #hud { position: fixed; inset: 0; z-index: 5; pointer-events: none; opacity: 0; transition: opacity .6s ease; }
     body.playing #hud { opacity: 1; }
     .interactive { pointer-events: auto; }
+    #mobileHud { display:none; }
 
     .topbar {
       position: absolute; top: 16px; left: 18px; right: 18px; height: 66px;

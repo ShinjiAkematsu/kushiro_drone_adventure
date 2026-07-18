@@ -254,6 +254,7 @@
 
     function updateHUD(force) {
       $('altitudeValue').textContent=Math.round(state.altitude);
+      $('mobileAltitudeValue').textContent=Math.round(state.altitude);
       $('speedValue').textContent=Math.round(state.speed*3.6);
       $('latValue').textContent=state.lat.toFixed(5)+'°N'; $('lngValue').textContent=state.lng.toFixed(5)+'°E';
       $('compassNeedle').style.transform='rotate('+state.heading+'deg)';
@@ -265,6 +266,7 @@
         const dir=directionLabel(bearingTo(s.lat,s.lng,state.lat,state.lng));
         $('locationName').textContent='釧路市街 '+dir+'エリア'; $('locationSub').textContent=s.name+'から'+dir+'へ '+formatDistance(nearest.distance)+'。'; $('zoneDistance').textContent='最寄り '+s.name;
       }
+      $('mobileLocationName').textContent=$('locationName').textContent;
       if(state.target!==null) {
         const t=SPOTS[state.target], d=haversine(state.lat,state.lng,t.lat,t.lng);
         $('targetDistance').textContent=formatDistance(d); $('targetName').textContent=t.name+' へ向かう';
@@ -303,6 +305,7 @@
 
     function updateProgress() {
       const n=state.visited.size; $('progressText').textContent=n+' / '+SPOTS.length; $('progressFill').style.width=(n/SPOTS.length*100)+'%';
+      $('mobileProgressValue').textContent=n+' / '+SPOTS.length;
       $('missionText').textContent=n===SPOTS.length?'KUSHIRO FLIGHT COMPLETE':'霧の記憶を集める';
     }
 
@@ -432,7 +435,7 @@
       $('mobileMenuBtn').setAttribute('aria-label',open?'設定とスポットを閉じる':'設定とスポットを開く');
     }
     $('mobileMenuBtn').addEventListener('click',()=>setMobileMenu(!$('flightMenu').classList.contains('mobile-open')));
-    const mobileQuery=window.matchMedia('(max-width:820px), (pointer:coarse) and (max-width:1100px)');
+    const mobileQuery=window.matchMedia('(max-width:1000px)');
     let mobileLayout=mobileQuery.matches;
     if(mobileLayout) {
       document.querySelectorAll('.right-stack .panel').forEach(panel=>panel.classList.add('collapsed'));
