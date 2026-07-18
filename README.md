@@ -11,8 +11,9 @@
 ## ファイル構成
 
 - `index.html` — 画面の構造
-- `css/styles.css` — 見た目とレイアウト
-- `js/game.js` — ドローン操作、カメラ、オートパイロットなど
+- `css/styles.css` — 基本の見た目とレイアウト
+- `css/responsive.css` — スマートフォン・タブレット向けレイアウト
+- `js/flight-controller.js` — ドローン操作、カメラ、オートパイロットなど
 - `js/spots.js` — 観光・主要スポットのデータ
 - `assets/kushiro-drone-logo-art.png` — タイトルロゴ
 - `assets/breeze-through-kushiro.mp3` — BGM

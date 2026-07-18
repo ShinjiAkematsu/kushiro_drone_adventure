@@ -1,0 +1,96 @@
+@media (max-width: 920px) {
+      .topbar { grid-template-columns:1fr auto; }
+      .mission-pill { position:absolute; top:70px; left:0; min-width:280px; }
+      .telemetry-card:nth-child(2) { display:none; }
+      .location-card { top:168px; width:310px; }
+      .target-card { top:318px; width:310px; }
+      .right-stack { top:168px; width:230px; }
+      .controls { display:none; }
+      #touchControls { display:block; }
+      .bottom-tools { bottom:24px; right:16px; }
+    }
+    @media (max-width:820px), (pointer:coarse) and (max-width:1100px) {
+      .topbar {
+        top:8px; left:8px; right:8px; height:auto;
+        grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:7px;
+      }
+      .brand { display:none; }
+      .mission-pill {
+        position:static; justify-self:start; width:66px; min-width:0;
+        padding:6px 7px 7px; border-radius:11px; text-align:left;
+      }
+      .mission-pill .eyebrow, #missionText { display:none; }
+      .mission-row { margin:0; justify-content:flex-start; }
+      #progressText { font-size:10px; }
+      #progressText::before { content:""; }
+      .progress { width:42px; margin-top:4px; }
+      .telemetry { gap:0; }
+      .telemetry-card { min-width:64px; padding:6px 8px; border-radius:11px; }
+      .telemetry-card:nth-child(2) { display:none; }
+      .telemetry-card strong { margin-top:0; font-size:13px; }
+      .telemetry-card span { font-size:7px; }
+
+      .location-card {
+        top:8px; left:50%; width:auto; max-width:calc(100vw - 156px); min-width:0;
+        padding:8px 10px; border-radius:999px; transform:translateX(-50%); text-align:center;
+      }
+      .location-header, #locationSub, .coordinates { display:none; }
+      #locationName { margin:0; overflow:hidden; color:#effaf7; font-size:12px; white-space:nowrap; text-overflow:ellipsis; }
+
+      .target-card {
+        top:auto; bottom:174px; left:50%; width:min(270px, calc(100vw - 116px));
+        padding:8px 10px; border-radius:13px; transform:translateX(-50%);
+      }
+      .target-card.active { animation:none; }
+      .target-label { display:none; }
+      .target-top { justify-content:flex-end; }
+      #targetName { margin-top:-15px; max-width:165px; overflow:hidden; font-size:11px; white-space:nowrap; text-overflow:ellipsis; }
+      #targetDistance { font-size:10px; }
+      .target-actions { margin-top:7px; gap:5px; }
+      .target-actions .btn { padding:6px 8px; font-size:8px; }
+
+      .right-stack {
+        display:none !important; visibility:hidden; top:54px; right:8px; bottom:94px; left:8px; width:auto;
+        max-height:calc(100vh - 148px); overflow:auto; justify-content:flex-end;
+        filter:drop-shadow(0 22px 50px rgba(0,0,0,.45));
+      }
+      .right-stack.mobile-open { display:flex !important; visibility:visible; }
+      .right-stack .panel:first-child { display:block; }
+      .right-stack .panel-body { max-height:min(43vh, 310px); }
+      .right-stack .panel:last-child .panel-body { max-height:min(43vh, 310px); }
+      .right-stack .panel.collapsed .panel-body { max-height:0; }
+      .panel { background:rgba(5,16,20,.94); }
+      .panel-head { min-height:44px; }
+      .controls { display:none; }
+      #touchControls { display:block; }
+
+      .start-card { padding:17px 14px 22px; }
+      .title-lockup { width:108%; margin-left:-4%; }
+      .title-copy { padding-left:13%; padding-right:13%; }
+      .start-features { grid-template-columns:1fr; }
+      .feature { padding:9px; }
+      .lead { line-height:1.65; }
+      .compass { display:none; }
+      .bottom-tools {
+        right:9px; bottom:10px; display:grid; grid-template-columns:repeat(2,36px); gap:6px;
+      }
+      .round-btn { width:36px; height:36px; }
+      #mobileMenuBtn { display:grid; }
+      #mobileMenuBtn.active { color:#082019; background:var(--mint); border-color:var(--mint); }
+      .touch-alt { right:12px; bottom:98px; }
+      .maplibregl-ctrl-bottom-right { right:96px; bottom:4px; }
+      #toastHost { top:92px; width:calc(100vw - 24px); }
+      .toast { max-width:100%; padding:8px 11px; text-align:center; }
+    }
+    @media (max-width:920px) and (max-height:520px) {
+      .location-card { top:9px; max-width:42vw; }
+      .topbar { right:auto; }
+      .telemetry { display:none; }
+      .right-stack { top:54px; bottom:72px; max-height:calc(100vh - 126px); }
+      .target-card { bottom:112px; }
+      .touch-pad { bottom:8px; transform:scale(.82); transform-origin:left bottom; }
+      .touch-alt { bottom:72px; transform:scale(.82); transform-origin:right bottom; }
+      .bottom-tools { bottom:8px; }
+    }
+    @media (pointer:fine) and (min-width:821px) { .right-stack .panel:last-child .panel-body { max-height:330px; } }
+  
