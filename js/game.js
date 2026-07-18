@@ -154,7 +154,10 @@
       $('spotList').innerHTML=SPOTS.map((s,i)=>
         '<div class="spot-row '+(state.visited.has(i)?'visited':'')+'" data-spot="'+i+'"><div class="spot-index">'+(state.visited.has(i)?'✓':String(i+1).padStart(2,'0'))+'</div><div class="spot-copy"><strong>'+s.name+'</strong><small>'+s.en+'</small></div><span class="spot-arrow">›</span></div>'
       ).join('');
-      document.querySelectorAll('.spot-row').forEach(el=>el.addEventListener('click',()=>setTarget(+el.dataset.spot)));
+      document.querySelectorAll('.spot-row').forEach(el=>el.addEventListener('click',()=>{
+        setTarget(+el.dataset.spot);
+        setMobileMenu(false);
+      }));
     }
 
     function startGame() {
@@ -420,6 +423,24 @@
       btn.addEventListener('pointerdown',on);btn.addEventListener('pointerup',off);btn.addEventListener('pointercancel',off);btn.addEventListener('pointerleave',off);
     });
     document.querySelectorAll('.panel-head').forEach(btn=>btn.addEventListener('click',()=>btn.parentElement.classList.toggle('collapsed')));
+    function setMobileMenu(open) {
+      $('flightMenu').classList.toggle('mobile-open',open);
+      $('mobileMenuBtn').classList.toggle('active',open);
+      $('mobileMenuBtn').setAttribute('aria-expanded',String(open));
+      $('mobileMenuBtn').setAttribute('aria-label',open?'設定とスポットを閉じる':'設定とスポットを開く');
+    }
+    $('mobileMenuBtn').addEventListener('click',()=>setMobileMenu(!$('flightMenu').classList.contains('mobile-open')));
+    let mobileLayout=window.matchMedia('(max-width:650px)').matches;
+    if(mobileLayout) {
+      document.querySelectorAll('.right-stack .panel').forEach(panel=>panel.classList.add('collapsed'));
+    }
+    window.addEventListener('resize',()=>{
+      const nextMobile=window.innerWidth<=650;
+      if(nextMobile&&!mobileLayout) document.querySelectorAll('.right-stack .panel').forEach(panel=>panel.classList.add('collapsed'));
+      if(!nextMobile) setMobileMenu(false);
+      mobileLayout=nextMobile;
+    });
+    $('map').addEventListener('pointerdown',()=>{if(mobileLayout)setMobileMenu(false);});
     document.querySelectorAll('.mode-btn').forEach(btn=>btn.addEventListener('click',()=>setCameraMode(btn.dataset.mode)));
 
     $('pitchSlider').addEventListener('input',e=>{state.pitch=+e.target.value;state.cameraMode='custom';document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));$('pitchOut').value=Math.round(state.pitch)+'°';});

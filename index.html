@@ -51,7 +51,7 @@
       </div>
     </section>
 
-    <aside class="right-stack interactive">
+    <aside class="right-stack interactive" id="flightMenu" aria-label="飛行メニュー">
       <section class="panel" id="cameraPanel">
         <button class="panel-head"><span>CAMERA CONTROL</span><span class="chevron">⌄</span></button>
         <div class="panel-body">
@@ -93,6 +93,7 @@
     </div>
 
     <div class="bottom-tools interactive">
+      <button id="mobileMenuBtn" class="round-btn" title="設定とスポット" aria-label="設定とスポットを開く" aria-controls="flightMenu" aria-expanded="false">☰</button>
       <button id="basemapQuickBtn" class="round-btn" title="地表テクスチャ切替">▧</button>
       <button id="soundBtn" class="round-btn active" title="BGM: Breeze Through Kushiro">♫</button>
       <button id="pauseBtn" class="round-btn" title="一時停止">Ⅱ</button>
